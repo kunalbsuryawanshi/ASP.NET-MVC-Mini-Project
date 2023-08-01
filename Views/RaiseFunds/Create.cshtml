@@ -1,0 +1,72 @@
+﻿@model Panchayat.Models.RaiseFund
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<body class="row mt-0">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 shadow">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="RaiseFunds" asp-action="Create">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PanchayatActivities" asp-action="ActivitiesForUser">Activities</a>
+                        </li>
+                        <li class="nav-item justify-content-end align-items-center d-flex w-100">
+                            <button class="btn btn-danger rounded-pill shadow" onclick="location.href='@Url.Action("Index", "Home")'">
+                                Log Out
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+<div class="row justify-content-center mt-5">
+    <div class="col-sm-12 col-md-3 col-lg-3 shadow-lg p-4">
+        <h4 class="text-center text-primary mt-4">Raise Fund</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mt-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter name..." />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" placeholder="Enter phone number..." />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" placeholder="Enter amount.."/>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Donate" class="form-control text-light mt-3 shadow bg-primary" />
+            </div>
+        </form>
+       
+        <button class="form-control bg-secondary mt-2 shadow">
+            <a class="text-decoration-none text-light" asp-controller="Signups" asp-action="Index">Back</a>
+        </button>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Panchayat.Models.PanchayatActivity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body class="row mt-0">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 shadow">
+            <div class="container-fluid">
+              
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PanchayatActivities" asp-action="AdminPage">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="RaiseFunds" asp-action="Index">Donations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PanchayatActivities" asp-action="Index">Activity</a>
+                        </li>
+                        <li class="nav-item justify-content-end align-items-center d-flex w-100">
+                            <button class="btn btn-danger rounded-pill shadow" onclick="location.href='@Url.Action("Index", "Home")'">
+                                Log Out
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+<h3 class="text-center mt-5"><span class="bg-success shadow p-2 rounded-3 text-light">Activities</span></h3>
+
+<div class="row justify-content-center p-5">
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>
+                    Activity No
+                </th>
+                <th>
+                    Activity Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="width:500px">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        <button class="btn btn-success">
+                            @Html.ActionLink("Edit", "Edit", new { item.Id }, new{@class = "text-light text-decoration-none"})
+                        </button>
+                        <button class="btn btn-warning">
+                            @Html.ActionLink("Details", "Details", new { item.Id }, new{@class = "text-light text-decoration-none"})
+                        </button>
+                        <button class="btn btn-danger">
+                            @Html.ActionLink("Delete", "Delete", new { item.Id }, new{@class = "text-light text-decoration-none"})
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-center">
+    <button style="width:120px" class="btn btn-primary me-2">
+        <a class="text-decoration-none text-light" asp-action="Create">Add Activity</a>
+    </button>
+    <button style="width:120px" class="btn btn-secondary"><a class="text-decoration-none text-light" asp-controller="PanchayatActivities" asp-action="AdminPage">Back</a></button>
+</div>

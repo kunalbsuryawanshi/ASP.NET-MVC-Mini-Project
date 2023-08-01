@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Panchayat.Models.RaiseFund>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body class="row mt-0">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 shadow">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Signups" asp-action="Index">Panchayat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="RaiseFunds" asp-action="Create">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PanchayatActivities" asp-action="ActivitiesForUser">Activities</a>
+                        </li>
+                        <li class="nav-item justify-content-end align-items-center d-flex w-100">
+                            <button class="btn btn-danger rounded-pill shadow" onclick="location.href='@Url.Action("Index", "Home")'">
+                                Log Out
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+<div class="mt-5">
+    &nbsp;
+</div>
+<h3 class="mt-5 mb-3 text-center"><span class="text-light p-2 bg-success shadow rounded-3">Thank you for supporting our GramPanchayat :)</span></h3>
